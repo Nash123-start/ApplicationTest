@@ -1,0 +1,66 @@
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
+apply plugin: 'com.android.application'
+/*
+ * Apply the MAM SDK plugin to this project. This will perform Intune class replacements automatically, see
+ * https://docs.microsoft.com/en-us/intune/app-sdk-android#replace-classes-methods-and-activities-with-their-mam-equivalent
+ * for more information.
+ */
+apply plugin: 'com.microsoft.intune.mam'
+
+android {
+    compileSdkVersion 31
+    defaultConfig {
+        applicationId "com.example.applicationtest"
+        minSdkVersion 23
+        targetSdkVersion 31
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        // Disabled because we don't care if this demo app shows up in a Google Search
+        disable 'GoogleAppIndexingWarning'
+    }
+}
+
+dependencies {
+    implementation "androidx.appcompat:appcompat:1.3.1"
+    implementation "com.google.android.material:material:1.4.0"
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+
+    def lifecycle_version = '2.2.0'
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+
+    def room_version = '2.2.5'
+    implementation "androidx.room:room-runtime:$room_version"
+    //implementation "com.medallia.digital.mobilesdk:android-sdk:3.9.1"
+
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    // Test helpers
+    testImplementation "androidx.room:room-testing:$room_version"
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation "com.medallia.digital.mobilesdk:android-sdk:3.9.1"
+
+    // Include the MAM SDK
+    implementation files('libs/Microsoft.Intune.MAM.SDK.aar')
+
+    // Include MSAL
+    implementation 'com.microsoft.identity.client:msal:2.0.8'
+}
+
+intunemam {
+    report = true
+}

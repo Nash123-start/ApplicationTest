@@ -1,0 +1,6 @@
+@startuml
+activate MAMActivity
+MAMActivity --> MAMActivity:onMAMCreate
+activate ActivityBehavior
+MAMActivity --> ActivityBehavior:onMAMCreate
+@enduml

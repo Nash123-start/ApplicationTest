@@ -1,0 +1,14 @@
+{
+  "client_id" : "e8fa413e-394b-45e7-82f1-6b999e61c2b1",
+  "authorization_user_agent" : "DEFAULT",
+  "redirect_uri" : "msauth://com.example.applicationtest/cKt3t%2FtxeJfKacrswa3LZ3FWo0Y%3D",
+  "authorities" : [
+    {
+      "type": "AAD",
+      "audience": {
+        "type": "AzureADMyOrg",
+        "tenant_id": "organizations"
+      }
+    }
+  ]
+}

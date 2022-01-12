@@ -1,0 +1,28 @@
+@startuml
+class Activity
+class MAMActivity extends Activity{
+}
+MAMActivity --> ActivityBehavior:use
+class ActivityBehavior {
+void attachBaseContext(HookedActivity var1, Context var2)
+   void onCreate(Bundle var1);
+
+    void onResume();
+
+    void onPostCreate(Bundle var1);
+
+    void onPostResume();
+
+    void onPause();
+
+    void onDestroy();
+
+    void onNewIntent(Intent var1);
+
+    void onSaveInstanceState(Bundle var1);
+
+    void onUserLeaveHint();
+}
+
+class OfflineActivityBehavior implements ActivityBehavior
+@enduml
